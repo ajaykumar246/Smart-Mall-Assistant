@@ -12,7 +12,7 @@ load_dotenv()
 # ------------------------------
 # MongoDB Setup
 # ------------------------------
-MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://mirun:mirun2005@cluster0.wka17ox.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+MONGO_URI = os.getenv("MONGODB_URI", "mongodb+srv://mirun:mirun2005@cluster0.wka17ox.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 client = MongoClient(MONGO_URI, server_api=ServerApi('1'))
 db = client["auraMallDB"]
 products_collection = db["products"]

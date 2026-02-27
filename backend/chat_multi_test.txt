@@ -1,0 +1,30 @@
+============================================================
+QUERY: south indian restaurant
+HAS_RESULTS: True
+RESPONSE:
+Sorry, I am currently experiencing a technical issue. Please try again later.
+
+============================================================
+QUERY: electronics store
+HAS_RESULTS: True
+RESPONSE:
+Sorry, I am currently experiencing a technical issue. Please try again later.
+
+============================================================
+QUERY: fashion clothing
+HAS_RESULTS: True
+RESPONSE:
+Sorry, I am currently experiencing a technical issue. Please try again later.
+
+============================================================
+QUERY: KFC menu card
+HAS_RESULTS: True
+RESPONSE:
+Sorry, I am currently experiencing a technical issue. Please try again later.
+
+============================================================
+QUERY: what stores are on floor 2
+HAS_RESULTS: True
+RESPONSE:
+Sorry, I am currently experiencing a technical issue. Please try again later.
+

@@ -124,31 +124,27 @@ class ShopLoginView(APIView):
         except Shop.DoesNotExist:
             return Response({'error': 'Invalid credentials'}, status=400)
         
-@csrf_exempt  # Token authentication is stateless, CSRF can be exempted
+@csrf_exempt
 @api_view(["POST"])
 @authentication_classes([])
 @permission_classes([AllowAny])
 def chatbot_response(request):
-    user_message = request.data.get('message')
-    # user_message = "hi"
-    
+    user_message = request.data.get('message', '').strip()
+
     if not user_message:
         return Response({'error': 'Message cannot be empty'}, status=400)
-
-    # Get or create chat session
-    #session, _ = ChatSession.objects.get_or_create(user=request.user)
-
-    # Save user message
-    #ChatMessage.objects.create(session=session, sender='user', message=user_message)
 
     # Get bot response safely
     try:
         bot_response_text = get_chatbot_response(user_message)
+        has_results = "No relevant information" not in bot_response_text and "wasn't found" not in bot_response_text
     except Exception as e:
-        bot_response_text = "error"
+        bot_response_text = "Sorry, I'm experiencing a technical issue. Please try again shortly."
+        has_results = False
         print("Chatbot error:", e)
 
-    # Save bot message
-    #ChatMessage.objects.create(session=session, sender='bot', message=bot_response_text)
-
-    return Response({'response': bot_response_text})
+    return Response({
+        'response': bot_response_text,
+        'has_results': has_results,
+        'query': user_message,
+    })
