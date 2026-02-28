@@ -1,4 +1,8 @@
-export const API_BASE = "http://127.0.0.1:8000"; 
+// When using ngrok, replace this with your backend ngrok URL, e.g.:
+// export const API_BASE = "https://xxxx-xxxx.ngrok-free.app";
+export const API_BASE = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+  ? "http://127.0.0.1:8000"
+  : "";  // falls back to same-origin; set your backend ngrok URL here if frontend & backend use separate tunnels
 
 function getCookie(name) {
   let cookieValue = null;

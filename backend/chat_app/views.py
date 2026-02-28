@@ -33,6 +33,8 @@ class UploadedImageCreateView(generics.CreateAPIView):
     queryset = UploadedImage.objects.all()
     serializer_class = UploadedImageSerializer
     parser_classes = [MultiPartParser, FormParser]
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
     def perform_create(self, serializer):
         instance = serializer.save()
@@ -67,11 +69,13 @@ class UploadedImageCreateView(generics.CreateAPIView):
 
 class UserRegistrationView(generics.CreateAPIView):
     permission_classes = [AllowAny]
+    authentication_classes = []
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 class UserLoginView(APIView):
     permission_classes = [AllowAny]
+    authentication_classes = []
 
     def post(self, request):
         username = request.data.get('username')
@@ -86,6 +90,7 @@ class UserLoginView(APIView):
 
 class LogoutAPIView(APIView):
     permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 
     def post(self, request):
         logout(request)
@@ -101,11 +106,13 @@ class LogoutAPIView(APIView):
 
 class ShopRegistrationView(generics.CreateAPIView):
     permission_classes = [AllowAny]
+    authentication_classes = []
     queryset = Shop.objects.all()
     serializer_class = ShopRegistrationSerializer
 
 class ShopLoginView(APIView):
     permission_classes = [AllowAny]
+    authentication_classes = []
     def post(self, request):
         email = request.data.get('email')
         password = request.data.get('password')

@@ -6,16 +6,19 @@ export default defineConfig({
   plugins: [react()],
   server: {
     // Allows your Vite dev server to be accessed by your ngrok URL
+    host: true,
     allowedHosts: [
-      'kpr-hackathon-st79zzkrj-agilessshobika-gmailcoms-projects.vercel.app' 
+      '.ngrok-free.dev',
+      '6ca7520ac28f.gemini-2.5-flash-free.app',
+      'http://localhost:5174',
+      //'kpr-hackathon-st79zzkrj-agilessshobika-gmailcoms-projects.vercel.app'
     ],
     proxy: {
-  "/api": {
-    target: "https://mall-backend-vlie.onrender.com",
-    changeOrigin: true,
-    secure: false,
+      "/api": {
+        target: "http://127.0.0.1:8000",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
-}
-
-  }
 })
