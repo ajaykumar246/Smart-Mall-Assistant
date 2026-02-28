@@ -153,3 +153,11 @@ def chatbot_response(request):
         'has_results': has_results,
         'query': user_message,
     })
+
+class UserCountView(APIView):
+    permission_classes = [AllowAny]
+    authentication_classes = []
+
+    def get(self, request):
+        count = User.objects.count()
+        return Response({'count': count})
