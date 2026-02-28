@@ -1,7 +1,0 @@
-STATUS: 200
-HAS_RESULTS: True
-QUERY: pizza restaurants
-RESPONSE:
-I'm sorry, but I couldn't find any pizza restaurants in our mall directory based on the information I have.
-
-Can I help you find something else, perhaps a different type of cuisine or a specific store? 😊

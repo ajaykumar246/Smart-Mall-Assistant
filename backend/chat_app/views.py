@@ -44,9 +44,7 @@ class UploadedImageCreateView(generics.CreateAPIView):
 
             # Use helper function to get recommended product image
             recommended_image_url, msg = run_fashion_advisor(
-                image_path,
-                db_connection=db,
-                clip_model_instance=clip_model_instance
+                image_path
             )
             self.recommended_image_url = recommended_image_url
             self.response_text = msg

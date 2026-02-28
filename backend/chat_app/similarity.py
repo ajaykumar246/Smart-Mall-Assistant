@@ -90,6 +90,9 @@ def run_fashion_advisor(user_image_path):
     """
     Given a user's uploaded image, return the top recommended product and AI text.
     """
+    client1 = MongoClient("mongodb+srv://mirunkaushik:mirun2005@cluster0.zdhf1hl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", server_api=ServerApi('1'))
+    db1 = client1["auraMallDB"]
+    products_collection1 = db1["products"]
     try:
         clip_model = get_clip_model()
         if clip_model is None:
@@ -125,7 +128,7 @@ def run_fashion_advisor(user_image_path):
             }
         ]
 
-        results = list(products_collection.aggregate(pipeline))
+        results = list(products_collection1.aggregate(pipeline))
         if not results:
             return None
 
