@@ -20,11 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "dev-secret-key")
 DEBUG = True#os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "http://localhost:5173",
-]
+ALLOWED_HOSTS = ["*"]
 
 # ------------------------------
 # CORS / CSRF
@@ -56,12 +52,14 @@ MIDDLEWARE = [
     'backend.middleware.ForceCORSHeadersMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
+    "http://localhost:5174",
+    "https://*.ngrok-free.app",
+    "https://*.ngrok-free.dev",
+    "https://*.ngrok.io",
 ]
 
 CORS_ALLOW_CREDENTIALS = True

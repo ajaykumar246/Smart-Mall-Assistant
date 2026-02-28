@@ -33,6 +33,8 @@ class UploadedImageCreateView(generics.CreateAPIView):
     queryset = UploadedImage.objects.all()
     serializer_class = UploadedImageSerializer
     parser_classes = [MultiPartParser, FormParser]
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
     def perform_create(self, serializer):
         instance = serializer.save()
